@@ -88,3 +88,22 @@ export async function deleteAccount(id: number) {
     revalidatePath('/contas-a-pagar');
     return { success: true };
 }
+
+/**
+ * Listando os dados
+ */
+export async function listAccounts() {
+    const supabase = await createClient();
+
+    const { data, error } = await supabase
+        .from('contas_pagar')
+        .select('*')
+        .order('data', { ascending: true });
+
+    if (error) {
+        console.error('Erro ao listar contas:', error);
+        return [];
+    }
+
+    return data;
+}
