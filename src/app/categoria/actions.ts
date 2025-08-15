@@ -85,7 +85,7 @@ export async function listCategory() {
     const { data, error } = await supabase
         .from('categoria')
         .select('*')
-        .order('data', { ascending: true });
+        .order('nome', { ascending: true });
 
     if (error) {
         console.error('Erro ao listar categorias:', error);
