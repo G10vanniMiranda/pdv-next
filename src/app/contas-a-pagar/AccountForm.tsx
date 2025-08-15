@@ -42,7 +42,7 @@ export function AccountForm({ mode, conta, onClose }: AccountFormProps) {
     }, [state, onClose]);
 
     return (
-        <form action={formAction}>
+        <form action={formAction} className="">
             {mode === 'edit' && conta && (
                 <input type="hidden" name="id" value={conta.id} />
             )}

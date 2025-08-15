@@ -14,7 +14,7 @@ export default async function ContasAPagarPage() {
     }
 
     return (
-        <div className="container mx-auto py-10 bg-slate-900 h-screen">
+        <div className="mx-auto py-10 bg-slate-900 h-screen w-screen">
             <div className="flex justify-between items-center mb-6 px-10">
                 <h1 className="text-xl font-bold text-slate-300">Contas a Pagar</h1>
                 <AddAccountButton />

@@ -64,7 +64,7 @@ export function ListaContas({ contas }: ListaContasProps) {
 
             {/* Modal único de edição/exclusão */}
             <Dialog open={!!contaSelecionada} onOpenChange={() => setContaSelecionada(null)}>
-                <DialogContent className="sm:max-w-[425px]">
+                <DialogContent className="sm:max-w-[425px] bg-gray-800">
                     <DialogHeader>
                         <DialogTitle>Editar Conta</DialogTitle>
                         <DialogDescription>
