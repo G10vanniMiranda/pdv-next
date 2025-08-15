@@ -32,7 +32,24 @@ export type Database = {
                     data?: string | null
                     user_id?: string | null
                 }
-            }
+            },
+            categoria: {
+                Row: {
+                    id: number
+                    created_at: string
+                    nome: string | null
+                }
+                Insert: {
+                    id?: number
+                    created_at?: string
+                    nome: string | null
+                }
+                Update: {
+                    id?: number
+                    created_at?: string
+                    nome?: string | null
+                }
+            },
         }
         Views: {
             [_ in never]: never
@@ -51,3 +68,4 @@ export type Database = {
 
 // Para facilitar, exportamos o tipo específico da linha da tabela
 export type ContaPagar = Database['public']['Tables']['contas_pagar']['Row'];
+export type Categoria = Database['public']['Tables']['categoria']['Row'];

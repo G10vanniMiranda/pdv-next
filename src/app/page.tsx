@@ -19,10 +19,12 @@ export default function Page() {
           </div>
         </Link>
 
-        <div className="w-44 h-44 bg-amber-200 hover:bg-amber-500 cursor-pointer">
-          <Image src="" width={150} height={150} alt="" className="w-full" />
-          <h2>Categorias</h2>
-        </div>
+        <Link href="categoria" >
+          <div className="w-44 h-44 bg-amber-200 hover:bg-amber-500 cursor-pointer">
+            <Image src="" width={150} height={150} alt="" className="w-full" />
+            <h2>Categorias</h2>
+          </div>
+        </Link>
       </div>
 
     </div>
