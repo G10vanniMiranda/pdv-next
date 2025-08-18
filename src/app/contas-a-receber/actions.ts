@@ -22,7 +22,7 @@ export async function createAccount(prevState: ActionState, formData: FormData) 
     const status = formData.get('status') as "Pendente" | "Pago" | "Atrasado";
 
     // O campo 'user_id' foi removido do objeto de inserção.
-    const { error } = await supabase.from('contas_pagar').insert({
+    const { error } = await supabase.from('contas_receber').insert({
         nome,
         valor: parseFloat(valor),
         data,
@@ -34,12 +34,12 @@ export async function createAccount(prevState: ActionState, formData: FormData) 
         return { message: 'Erro de banco de dados: Não foi possível criar a conta.' };
     }
 
-    revalidatePath('/contas-a-pagar');
+    revalidatePath('/contas-a-receber');
     return { message: 'success' };
 }
 
 /**
- * Atualiza uma conta a pagar existente.
+ * Atualiza uma conta a receber existente.
  */
 export async function updateAccount(prevState: ActionState, formData: FormData) {
     const supabase = await createClient();
@@ -51,7 +51,7 @@ export async function updateAccount(prevState: ActionState, formData: FormData) 
     const status = formData.get('status') as "Pendente" | "Pago" | "Atrasado";
 
     const { error } = await supabase
-        .from('contas_pagar')
+        .from('contas_receber')
         .update({
             nome,
             valor: parseFloat(valor),
@@ -65,18 +65,18 @@ export async function updateAccount(prevState: ActionState, formData: FormData) 
         return { message: 'Erro de banco de dados: Não foi possível atualizar a conta.' };
     }
 
-    revalidatePath('/contas-a-pagar');
+    revalidatePath('/contas-a-receber');
     return { message: 'success' };
 }
 
 /**
- * Exclui uma conta a pagar do banco de dados.
+ * Exclui uma conta a receber do banco de dados.
  */
 export async function deleteAccount(id: number) {
     const supabase = await createClient();
 
     const { error } = await supabase
-        .from('contas_pagar')
+        .from('contas_receber')
         .delete()
         .eq('id', id);
 
@@ -85,7 +85,7 @@ export async function deleteAccount(id: number) {
         return { error: 'Erro de banco de dados: Não foi possível excluir a conta.' };
     }
 
-    revalidatePath('/contas-a-pagar');
+    revalidatePath('/contas-a-receber');
     return { success: true };
 }
 
@@ -96,7 +96,7 @@ export async function listAccounts() {
     const supabase = await createClient();
 
     const { data, error } = await supabase
-        .from('contas_pagar')
+        .from('contas_receber')
         .select('*')
         .order('data', { ascending: true });
 

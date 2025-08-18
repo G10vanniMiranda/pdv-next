@@ -5,87 +5,88 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Badge } from '@/components/ui/badge';
-import { ContaPagar } from '@/lib/types/database.types';
-import { AccountForm } from './AccountForm';
-import { deleteAccount } from './actions';
+import { Assinatura } from '@/lib/types/database.types';
+import { SignatureForm } from './form';
+import { deleteSignature } from './actions';
 
-interface ListaContasProps {
-    contas: ContaPagar[];
+interface ListaAssinaturaProps {
+    assinaturas: Assinatura[];
 }
 
-export function ListaContas({ contas }: ListaContasProps) {
-    const [contaSelecionada, setContaSelecionada] = useState<ContaPagar | null>(null);
+export function ListaAssinatura({ assinaturas }: ListaAssinaturaProps) {
+    const [assinaturaSelecionada, setAssinaturaSelecionada] = useState<Assinatura | null>(null);
 
     const handleDelete = async (id: number) => {
-        await deleteAccount(id);
-        setContaSelecionada(null);
+        await deleteSignature(id);
+        setAssinaturaSelecionada(null);
     };
 
     return (
         <div className="space-y-2 px-10">
-            {contas.length === 0 && (
+            {assinaturas.length === 0 && (
                 <div className="text-center text-gray-500">Nenhum resultado encontrado.</div>
             )}
 
-            {contas.map((conta) => (
+            {assinaturas.map((assinatura) => (
                 <div
-                    key={conta.id}
+                    key={assinatura.id}
                     className="flex items-center justify-between p-3 border rounded-md cursor-pointer hover:bg-gray-800 duration-300"
-                    onClick={() => setContaSelecionada(conta)}
+                    onClick={() => setAssinaturaSelecionada(assinatura)}
                 >
                     <div className="flex flex-col">
-                        <span className="font-semibold text-gray-300">{conta.nome}</span>
-                        <span className="text-sm text-gray-300">
-                            Vencimento: {conta.data ? new Date(conta.data).toLocaleDateString('pt-BR') : 'N/A'}
-                        </span>
+                        <span className="font-semibold text-gray-300">{assinatura.nome}</span>
+                    </div>
+
+                    <div className="flex flex-col">
+                        <span className="font-semibold text-gray-300">{assinatura.descricao}</span>
                     </div>
 
                     <div className="flex items-center gap-3">
                         <span className="font-medium text-gray-300">
-                            {Number(conta.valor).toLocaleString('pt-BR', {
+                            {Number(assinatura.valor).toLocaleString('pt-BR', {
                                 style: 'currency',
                                 currency: 'BRL',
                             })}
                         </span>
                         <Badge
                             variant={
-                                conta.status === 'Pago'
+                                assinatura.status === 'Grátis'
                                     ? 'default'
-                                    : conta.status === 'Atrasado'
+                                    : assinatura.status === 'Avião'
                                         ? 'destructive'
                                         : 'secondary'
                             }
                         >
-                            {conta.status}
+                            {assinatura.status}
                         </Badge>
                     </div>
                 </div>
             ))}
 
             {/* Modal único de edição/exclusão */}
-            <Dialog open={!!contaSelecionada} onOpenChange={() => setContaSelecionada(null)}>
+            <Dialog open={!!assinaturaSelecionada} onOpenChange={() => setAssinaturaSelecionada(null)}>
                 <DialogContent className="sm:max-w-[425px] bg-gray-800">
                     <DialogHeader>
-                        <DialogTitle>Editar Conta</DialogTitle>
+                        <DialogTitle>Editar Assinatura</DialogTitle>
                         <DialogDescription>
                             Faça alterações na sua conta ou exclua permanentemente.
                         </DialogDescription>
                     </DialogHeader>
 
-                    {contaSelecionada && (
+                    {assinaturaSelecionada && (
                         <>
-                            <AccountForm
+                            <SignatureForm
                                 mode="edit"
-                                conta={contaSelecionada}
-                                onClose={() => setContaSelecionada(null)}
+                                assinatura={assinaturaSelecionada}
+                                onClose={() => setAssinaturaSelecionada(null)}
                             />
 
                             <Button
                                 variant="destructive"
                                 className="w-full mt-4"
-                                onClick={() => handleDelete(contaSelecionada.id)}
+                                onClick={() => handleDelete(assinaturaSelecionada.id)}
                             >
-                                Excluir Conta
+                                Excluir Assinatura
                             </Button>
                         </>
                     )}

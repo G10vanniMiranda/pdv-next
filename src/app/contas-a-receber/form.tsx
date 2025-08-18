@@ -1,4 +1,4 @@
-// app/contas-a-pagar/account-form.tsx
+// app/contas-a-receber/account-form.tsx
 'use client';
 
 import { Button } from '@/components/ui/button';
@@ -14,7 +14,7 @@ import {
 import { createAccount, updateAccount } from './actions';
 import { useFormState, useFormStatus } from 'react-dom';
 import { useEffect } from 'react';
-import { ContaPagar } from '@/lib/types/database.types';
+import { ContaReceber } from '@/lib/types/database.types';
 
 function SubmitButton({ mode }: { mode: 'create' | 'edit' }) {
     const { pending } = useFormStatus();
@@ -27,7 +27,7 @@ function SubmitButton({ mode }: { mode: 'create' | 'edit' }) {
 
 interface AccountFormProps {
     mode: 'create' | 'edit';
-    conta?: ContaPagar;
+    conta?: ContaReceber;
     onClose: () => void;
 }
 

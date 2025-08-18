@@ -4,7 +4,62 @@
 export type Database = {
     public: {
         Tables: {
+            assinatura: {
+                Row: {
+                    id: number
+                    created_at: string
+                    nome: string | null
+                    descricao: string | null
+                    valor: number | null
+                    status: "Grátis" | "Avião" | "Foguete" | null
+                }
+                Insert: {
+                    id?: number
+                    created_at?: string
+                    nome: string | null
+                    descricao: string | null
+                    valor: number | null
+                    status: "Grátis" | "Avião" | "Foguete" | null
+                }
+                Update: {
+                    id?: number
+                    created_at?: string
+                    nome: string | null
+                    descricao: string | null
+                    valor: number | null
+                    status: "Grátis" | "Avião" | "Foguete" | null
+                }
+            },
             contas_pagar: {
+                Row: {
+                    id: number
+                    created_at: string
+                    nome: string | null
+                    status: "Pendente" | "Pago" | "Atrasado" | null
+                    valor: number | null
+                    data: string | null
+                    user_id: string | null
+                }
+                Insert: {
+                    id?: number
+                    created_at?: string
+                    nome: string | null
+                    status: "Pendente" | "Pago" | "Atrasado" | null
+                    valor: number | null
+                    data: string | null
+                    user_id: string | null
+                }
+                Update: {
+                    id?: number
+                    created_at?: string
+                    nome?: string | null
+                    status?: "Pendente" | "Pago" | "Atrasado" | null
+                    valor?: number | null
+                    data?: string | null
+                    user_id?: string | null
+                }
+            },
+            contas_receber: {
                 Row: {
                     id: number
                     created_at: string
@@ -67,5 +122,7 @@ export type Database = {
 }
 
 // Para facilitar, exportamos o tipo específico da linha da tabela
+export type Assinatura = Database['public']['Tables']['assinatura']['Row'];
 export type ContaPagar = Database['public']['Tables']['contas_pagar']['Row'];
+export type ContaReceber = Database['public']['Tables']['contas_receber']['Row'];
 export type Categoria = Database['public']['Tables']['categoria']['Row'];

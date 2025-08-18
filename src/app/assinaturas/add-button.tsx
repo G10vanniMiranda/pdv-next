@@ -11,9 +11,9 @@ import {
     DialogTrigger,
 } from '@/components/ui/dialog';
 import { useState } from 'react';
-import { AccountForm } from './AccountForm';
+import { SignatureForm } from './form';
 
-export function AddAccountButton() {
+export function AddButton() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
@@ -29,7 +29,7 @@ export function AddAccountButton() {
                     </DialogDescription>
                 </DialogHeader>
                 {/* Formulário genérico no modo 'create' */}
-                <AccountForm mode="create" onClose={() => setIsOpen(false)} />
+                <SignatureForm mode="create" onClose={() => setIsOpen(false)} />
             </DialogContent>
         </Dialog>
     );
