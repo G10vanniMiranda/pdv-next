@@ -18,12 +18,18 @@ export function AddButton() {
 
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-            <DialogTrigger asChild >
-                <Button>Adicionar</Button>
+
+            <DialogTrigger asChild className='hidden md:flex'>
+                <Button className='cursor-pointer'>Adicionar</Button>
             </DialogTrigger>
+
+            <DialogTrigger asChild className='md:hidden'>
+                <Button className='cursor-pointer'>+</Button>
+            </DialogTrigger>
+
             <DialogContent className="sm:max-w-[425px] bg-gray-700">
                 <DialogHeader>
-                    <DialogTitle>Adicionar</DialogTitle>
+                    <DialogTitle className='text-slate-300'>Adicionar</DialogTitle>
                     <DialogDescription className='text-slate-300'>
                         Preencha as informações da nova conta a pagar.
                     </DialogDescription>

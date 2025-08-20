@@ -44,8 +44,9 @@ export async function createSignature(prevState: ActionState, formData: FormData
 export async function updateSignature(prevState: ActionState, formData: FormData) {
     const supabase = await createClient();
 
-    const id = formData.get('id') as string; const nome = formData.get('nome') as string;
-    const descricao = formData.get('nome') as string;
+    const id = formData.get('id') as string;
+    const nome = formData.get('nome') as string;
+    const descricao = formData.get('descricao') as string;
     const valor = formData.get('valor') as string;
     const status = formData.get('status') as "Grátis" | "Avião" | "Foguete";
 

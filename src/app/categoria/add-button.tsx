@@ -20,7 +20,7 @@ export function AddAccountButton() {
     return (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
             <DialogTrigger asChild >
-                <Button>Adicionar</Button>
+                <Button className=''>Adicionar</Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[425px] bg-gray-700">
                 <DialogHeader>
