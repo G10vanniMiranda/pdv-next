@@ -27,6 +27,7 @@ export default function EletronicoPage() {
                 </div>
 
                 <div className="pt-5 flex gap-3 flex-wrap justify-center items-start">
+
                     <div className="w-44 h-96">
                         <div className="bg-blue-700 rounded-t-xl p-7">
                             <Image src="/loja-online/catalogo-produtos/teclado.png"
@@ -37,6 +38,7 @@ export default function EletronicoPage() {
                             <h3 className="text-slate-200">Teclados</h3>
                         </div>
                     </div>
+
                     <div className="w-44 h-96">
                         <div className="bg-blue-700 rounded-t-xl p-7">
                             <Image src="/loja-online/catalogo-produtos/teclado.png"
@@ -47,6 +49,7 @@ export default function EletronicoPage() {
                             <h3 className="text-slate-200">Teclados</h3>
                         </div>
                     </div>
+
                     <div className="w-44 h-96">
                         <div className="bg-blue-700 rounded-t-xl p-7">
                             <Image src="/loja-online/catalogo-produtos/teclado.png"
@@ -57,6 +60,7 @@ export default function EletronicoPage() {
                             <h3 className="text-slate-200">Teclados</h3>
                         </div>
                     </div>
+
                     <div className="w-44 h-96">
                         <div className="bg-blue-700 rounded-t-xl p-7">
                             <Image src="/loja-online/catalogo-produtos/teclado.png"
@@ -67,6 +71,7 @@ export default function EletronicoPage() {
                             <h3 className="text-slate-200">Teclados</h3>
                         </div>
                     </div>
+
                     <div className="w-44 h-96">
                         <div className="bg-blue-700 rounded-t-xl p-7">
                             <Image src="/loja-online/catalogo-produtos/teclado.png"
@@ -77,6 +82,7 @@ export default function EletronicoPage() {
                             <h3 className="text-slate-200">Teclados</h3>
                         </div>
                     </div>
+
                     <div className="w-44 h-96">
                         <div className="bg-blue-700 rounded-t-xl p-7">
                             <Image src="/loja-online/catalogo-produtos/teclado.png"
@@ -86,7 +92,9 @@ export default function EletronicoPage() {
                         <div className="bg-slate-800 h-10 rounded-b-xl flex items-center justify-center">
                             <h3 className="text-slate-200">Teclados</h3>
                         </div>
+
                     </div>
+
                 </div>
             </section>
 
