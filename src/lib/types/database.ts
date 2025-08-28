@@ -13,3 +13,9 @@ export interface ContaPagar {
     data: string | null; // Formato YYYY-MM-DD
     user_id: string | null;
 }
+
+// js,
+// jsx, --> html
+
+// ts,
+// tsx, --> html

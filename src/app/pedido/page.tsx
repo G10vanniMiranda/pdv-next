@@ -67,7 +67,7 @@ export default function PedidoPage() {
     };
 
     return (
-        <div className="p-10 min-h-screen bg-gray-100">
+        <div className="p-10 min-h-screen bg-gray-950">
             <h1 className="text-3xl font-bold mb-6 text-gray-800">📊 Dashboard de Pedidos</h1>
 
             {/* Resumos */}
@@ -81,7 +81,7 @@ export default function PedidoPage() {
                     <motion.div
                         key={idx}
                         whileHover={{ scale: 1.05 }}
-                        className="bg-white shadow-md rounded-2xl p-6 flex flex-col items-center"
+                        className="bg-slate-800 shadow-md rounded-2xl p-6 flex flex-col items-center"
                     >
                         <p className="text-xl font-semibold text-green-600">R$ {card.valor}</p>
                         <h2 className="text-gray-600 mt-2">{card.titulo}</h2>
@@ -90,7 +90,7 @@ export default function PedidoPage() {
             </div>
 
             {/* Formulário */}
-            <div className="bg-white shadow-md rounded-2xl p-6 mb-10">
+            <div className="bg-slate-800 shadow-md rounded-2xl p-6 mb-10">
                 <h2 className="text-lg font-semibold mb-4">➕ Adicionar Pedido</h2>
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <input
@@ -133,16 +133,16 @@ export default function PedidoPage() {
             </div>
 
             {/* Lista */}
-            <div className="bg-white shadow-md rounded-2xl p-6">
-                <h2 className="text-lg font-semibold mb-4">📦 Estoque</h2>
+            <div className="bg-slate-800 shadow-md rounded-2xl p-6">
+                <h2 className="text-lg font-semibold text-green-500 mb-4">📦 Estoque</h2>
                 <ul className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {estoque.map((item) => (
                         <li
                             key={item.id}
-                            className={`rounded-xl p-4 text-center shadow-md ${item.vendido ? "bg-green-100 border border-green-300" : "bg-gray-100"
+                            className={`rounded-xl text-green-500 p-4 text-center shadow-md ${item.vendido ? "bg-slate-800 border border-green-300" : "border border-green-300 bg-slate-800"
                                 }`}
                         >
-                            <p className="font-semibold text-gray-800">{item.nome}</p>
+                            <p className="font-semibold text-green-600">{item.nome}</p>
                             <p className="text-sm text-gray-500">R$ {item.valor}</p>
                             <span className="text-xs px-2 py-1 mt-2 inline-block rounded-full bg-gray-200">
                                 {item.categoria}
