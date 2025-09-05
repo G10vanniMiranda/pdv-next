@@ -1,42 +1,59 @@
-import Image from "next/image";
-import Link from "next/link";
+"use client"
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible"
+import { useState } from "react";
+import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 
 export default function Page() {
+
+  const [isOpen, setIsOpen] = useState("hidden");
+
+  const mudar = () => {
+    setIsOpen(isOpen === "hidden" ? "flex" : "hidden");
+  };
+
   return (
-    <div className="bg-slate-900 h-screen">
-      <h1 className="text-white text-5xl text-center pt-10 pb-10">Modulos</h1>
+    <div className="bg-slate-700 h-screen">
 
-      <div className="flex flex-wrap gap-3 items-center justify-around">
+      <button onClick={mudar}>Mudar</button>
 
-        <Link href="assinaturas" >
-          <div className="w-44 h-44 bg-sky-200 hover:bg-sky-500 cursor-pointer p-5 rounded-lg">
-            <Image src="/icones/assinatura.webp" width={150} height={150} alt="" className="w-full h-28" />
-            <h2>Assinaturas</h2>
+      <Collapsible className="bg-slate-900 hover:bg-slate-800 w-96 h-20">
+        <CollapsibleTrigger className="text-white h-20 w-full flex">
+
+          <div className="w-16 h-20 flex items-center justify-center">
+
+            <div className="bg-black w-10 h-10 rounded-full flex items-center justify-center">
+              <h2>1</h2>
+            </div>
+
           </div>
-        </Link>
 
-        <Link href="contas-a-pagar" >
-          <div className="w-44 h-44 bg-sky-200 hover:bg-sky-500 cursor-pointer p-5 rounded-lg">
-            <Image src="/icones/contas-receber.png" width={150} height={150} alt="" className="w-full h-28" />
-            <h2>Contas a Pagar</h2>
+          <div className="flex-1 flex flex-col items-start justify-center">
+
+            <h1 className="text-lg">Primeiros passos</h1>
+
+            <p className="text-sm">1 aula * 02:47</p>
+
           </div>
-        </Link>
 
-        <Link href="contas-a-receber" >
-          <div className="w-44 h-44 bg-sky-200 hover:bg-sky-500 cursor-pointer p-5 rounded-lg">
-            <Image src="/icones/contas-pagar.png" width={150} height={150} alt="" className="w-full h-28" />
-            <h2>Contas a Receber</h2>
+          <div className="bg-green-400 w-16 h-20">
+
+            <IoIosArrowDown className={isOpen} />
+            <IoIosArrowUp className={isOpen} />
+
           </div>
-        </Link>
 
-        <Link href="categoria">
-          <div className="w-44 h-44 bg-sky-200 hover:bg-sky-500 cursor-pointer p-5 rounded-lg">
-            <Image src="/icones/categorias.png" width={150} height={150} alt="" className="w-full h-28" />
-            <h2>Categorias</h2>
-          </div>
-        </Link>
+        </CollapsibleTrigger>
 
-      </div>
+        <CollapsibleContent className="text-white">
+          Yes. Free to use for personal and commercial projects. No attribution
+          required.
+        </CollapsibleContent>
+      </Collapsible>
 
     </div>
   );

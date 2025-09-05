@@ -1,8 +1,5 @@
-"use client";
-
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Form from "./form/page";
 
 interface ICep {
     cep: string;
@@ -11,7 +8,7 @@ interface ICep {
     bairro: string;
 }
 
-export default function EnderecoPage() {
+export default function Form() {
     const [cep, setCep] = useState("");
     const [estado, setEstado] = useState("");
     const [cidade, setCidade] = useState("");
@@ -103,32 +100,67 @@ export default function EnderecoPage() {
     useEffect(() => {
         buscarEnderecos();
     }, []);
-
     return (
-        <div className="bg-slate-900 min-h-screen p-6">
-            <h3 className="text-white pt-5 text-3xl text-center mb-3">
-                Confirme seu endereço
-            </h3>
-
-            <Form />
-            {/* Lista de endereços */}
-            <div className="w-96 mx-auto mt-6 bg-slate-800 p-5 rounded-xl text-white">
-                <h4 className="text-lg mb-3">Endereços cadastrados:</h4>
-                {enderecos.length === 0 ? (
-                    <p>Nenhum endereço cadastrado ainda.</p>
-                ) : (
-                    <ul className="space-y-2">
-                        {enderecos.map((endereco, idx) => (
-                            <li
-                                key={idx}
-                                className="bg-slate-700 p-2 rounded-md flex justify-between"
-                            >
-                                <span>{endereco.cep} - {endereco.bairro}, {endereco.cidade}/{endereco.estado}</span>
-                            </li>
-                        ))}
-                    </ul>
-                )}
+        <form
+            onSubmit={gravarEndereco}
+            className="w-96 mx-auto bg-slate-600 p-5 rounded-xl"
+        >
+            <div className="flex flex-col">
+                <label htmlFor="cep" className="text-slate-400">
+                    Cep
+                </label>
+                <input
+                    id="cep"
+                    type="text"
+                    placeholder="Digite o cep"
+                    value={cep}
+                    onChange={handleCepChange}
+                    onKeyUp={handleKeyUp}
+                    className="bg-slate-700 p-2 rounded-full px-3 text-white"
+                />
             </div>
-        </div>
-    );
+            <div className="flex flex-col">
+                <label htmlFor="estado" className="text-slate-400">
+                    Estado
+                </label>
+                <input
+                    id="estado"
+                    type="text"
+                    value={estado}
+                    readOnly
+                    className="bg-slate-700 p-2 rounded-full px-3 text-white"
+                />
+            </div>
+            <div className="flex flex-col">
+                <label htmlFor="cidade" className="text-slate-400">
+                    Cidade
+                </label>
+                <input
+                    id="cidade"
+                    type="text"
+                    value={cidade}
+                    readOnly
+                    className="bg-slate-700 p-2 rounded-full px-3 text-white"
+                />
+            </div>
+            <div className="flex flex-col">
+                <label htmlFor="bairro" className="text-slate-400">
+                    Bairro
+                </label>
+                <input
+                    id="bairro"
+                    type="text"
+                    value={bairro}
+                    readOnly
+                    className="bg-slate-700 p-2 rounded-full px-3 text-white"
+                />
+            </div>
+            <button
+                type="submit"
+                className="p-2 bg-violet-700 rounded-md mt-3 text-white hover:bg-violet-600 cursor-pointer"
+            >
+                Gravar
+            </button>
+        </form>
+    )
 }
